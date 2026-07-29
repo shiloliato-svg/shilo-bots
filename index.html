@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שילה ליאטו | בניית בוטים חכמים לוואטסאפ</title>
+<meta name="description" content="בניית בוטים אוטומטיים לוואטסאפ עם בינה מלאכותית - למענה ללקוחות, תיאום פגישות ועוד. השאירו פרטים ונחזור אליכם.">
+<style>
+  :root{
+    --bg:#0b1410;
+    --bg2:#0f1c16;
+    --card:#132921;
+    --card-border:#1f3a2e;
+    --text:#eef5f1;
+    --text-dim:#a9c2b7;
+    --accent:#25D366;
+    --accent-dark:#1aa851;
+    --accent-glow: rgba(37,211,102,0.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Segoe UI', Arial, Helvetica, sans-serif;
+    background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,20,16,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--card-border);
+  }
+  header .container{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.2rem;}
+  .logo-badge{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-dark));
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  }
+  nav{display:flex;gap:28px;font-size:0.95rem;color:var(--text-dim);}
+  nav a:hover{color:var(--accent);}
+  .cta-btn{
+    background:var(--accent);color:#08150f;font-weight:700;
+    padding:10px 22px;border-radius:999px;font-size:0.95rem;
+    box-shadow:0 4px 20px var(--accent-glow);
+    transition:transform .15s ease, box-shadow .15s ease;
+    display:inline-block;
+  }
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 26px var(--accent-glow);}
+
+  /* Hero */
+  .hero{
+    padding:90px 0 70px;
+    text-align:center;
+    position:relative;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;top:-100px;right:50%;transform:translateX(50%);
+    width:600px;height:600px;
+    background:radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    z-index:0;
+  }
+  .hero .container{position:relative;z-index:1;}
+  .eyebrow{
+    display:inline-block;background:var(--card);border:1px solid var(--card-border);
+    color:var(--accent);font-size:0.85rem;padding:6px 16px;border-radius:999px;margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2rem, 5vw, 3.4rem);
+    font-weight:800;
+    margin-bottom:20px;
+    letter-spacing:-0.5px;
+  }
+  .hero h1 span{color:var(--accent);}
+  .hero p.lead{
+    font-size:1.15rem;color:var(--text-dim);
+    max-width:640px;margin:0 auto 36px;
+  }
+  .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-secondary{
+    border:1px solid var(--card-border);
+    padding:10px 22px;border-radius:999px;
+    color:var(--text);font-weight:600;font-size:0.95rem;
+  }
+  .btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* Sections */
+  section{padding:70px 0;}
+  .section-title{
+    text-align:center;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;margin-bottom:12px;
+  }
+  .section-sub{
+    text-align:center;color:var(--text-dim);max-width:600px;margin:0 auto 48px;
+  }
+
+  /* Features grid */
+  .grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  @media (max-width:860px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .grid{grid-template-columns:1fr;}
+  }
+  .card{
+    background:var(--card);border:1px solid var(--card-border);
+    border-radius:16px;padding:28px 24px;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .card:hover{transform:translateY(-4px);border-color:var(--accent);}
+  .card .icon{
+    font-size:1.8rem;margin-bottom:14px;
+    width:50px;height:50px;border-radius:12px;
+    background:rgba(37,211,102,0.12);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card h3{font-size:1.1rem;margin-bottom:8px;}
+  .card p{color:var(--text-dim);font-size:0.95rem;}
+
+  /* How it works */
+  .steps{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;counter-reset:step;
+  }
+  .step{
+    position:relative;background:var(--card);border:1px solid var(--card-border);
+    border-radius:16px;padding:28px 24px 24px;
+  }
+  .step .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:36px;height:36px;border-radius:50%;
+    background:var(--accent);color:#08150f;font-weight:800;
+    margin-bottom:16px;
+  }
+  .step h3{margin-bottom:8px;font-size:1.05rem;}
+  .step p{color:var(--text-dim);font-size:0.92rem;}
+
+  /* Use cases */
+  .usecases{
+    display:flex;flex-wrap:wrap;gap:14px;justify-content:center;
+  }
+  .tag{
+    background:var(--card);border:1px solid var(--card-border);
+    padding:12px 20px;border-radius:12px;font-size:0.95rem;color:var(--text-dim);
+  }
+
+  /* Contact */
+  .contact-wrap{
+    background:var(--card);border:1px solid var(--card-border);
+    border-radius:24px;padding:48px;
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;
+  }
+  @media (max-width:800px){
+    .contact-wrap{grid-template-columns:1fr;padding:32px 24px;}
+  }
+  .contact-info h2{font-size:1.6rem;margin-bottom:16px;}
+  .contact-info p{color:var(--text-dim);margin-bottom:24px;}
+  .contact-info ul{list-style:none;}
+  .contact-info li{
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;color:var(--text-dim);font-size:0.95rem;
+  }
+  .contact-info li .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;
+  }
+
+  form{display:flex;flex-direction:column;gap:16px;}
+  form label{font-size:0.88rem;color:var(--text-dim);margin-bottom:-8px;}
+  form input, form textarea{
+    background:var(--bg2);border:1px solid var(--card-border);
+    border-radius:10px;padding:12px 14px;color:var(--text);
+    font-family:inherit;font-size:0.95rem;
+    outline:none;transition:border-color .15s ease;
+  }
+  form input:focus, form textarea:focus{border-color:var(--accent);}
+  form textarea{resize:vertical;min-height:90px;}
+  form button{
+    background:var(--accent);color:#08150f;font-weight:800;
+    border:none;border-radius:999px;padding:14px;font-size:1rem;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 4px 20px var(--accent-glow);
+  }
+  form button:hover{transform:translateY(-2px);}
+  .form-note{font-size:0.8rem;color:var(--text-dim);text-align:center;}
+  .success-msg, .error-msg{
+    display:none;padding:14px;border-radius:10px;font-size:0.9rem;text-align:center;
+  }
+  .success-msg{background:rgba(37,211,102,0.15);color:var(--accent);border:1px solid var(--accent);}
+  .error-msg{background:rgba(220,53,69,0.12);color:#ff8a94;border:1px solid #ff8a94;}
+
+  /* Footer */
+  footer{
+    border-top:1px solid var(--card-border);padding:32px 0;
+    text-align:center;color:var(--text-dim);font-size:0.9rem;
+  }
+  footer a.wa-float{color:var(--accent);font-weight:700;}
+
+  /* WhatsApp floating button */
+  .wa-fab{
+    position:fixed;bottom:24px;left:24px;z-index:60;
+    width:58px;height:58px;border-radius:50%;
+    background:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;box-shadow:0 6px 24px var(--accent-glow);
+    transition:transform .15s ease;
+  }
+  .wa-fab:hover{transform:scale(1.08);}
+
+  /* Accessibility widget */
+  .a11y-fab{
+    position:fixed;bottom:24px;right:24px;z-index:60;
+    width:52px;height:52px;border-radius:50%;
+    background:var(--card);border:2px solid var(--accent);color:var(--accent);
+    font-size:1.4rem;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 24px rgba(0,0,0,0.35);
+    transition:transform .15s ease;
+  }
+  .a11y-fab:hover{transform:scale(1.08);}
+  .a11y-panel{
+    display:none;position:fixed;bottom:86px;right:24px;z-index:61;
+    width:240px;background:var(--card);border:1px solid var(--card-border);
+    border-radius:14px;padding:12px;box-shadow:0 10px 40px rgba(0,0,0,0.45);
+  }
+  .a11y-panel.open{display:block;}
+  .a11y-panel-header{
+    display:flex;align-items:center;justify-content:space-between;
+    font-weight:700;padding:4px 6px 10px;border-bottom:1px solid var(--card-border);margin-bottom:8px;
+  }
+  .a11y-panel-header button{
+    background:none;border:none;color:var(--text-dim);font-size:1rem;cursor:pointer;
+  }
+  .a11y-option{
+    display:block;width:100%;text-align:right;
+    background:var(--bg2);border:1px solid var(--card-border);color:var(--text);
+    padding:10px 12px;border-radius:8px;font-size:0.9rem;cursor:pointer;margin-bottom:8px;
+    transition:border-color .15s ease;
+  }
+  .a11y-option:last-child{margin-bottom:0;}
+  .a11y-option:hover{border-color:var(--accent);color:var(--accent);}
+
+  body.a11y-contrast{
+    background:#000 !important;color:#fff !important;
+  }
+  body.a11y-contrast .card, body.a11y-contrast .step, body.a11y-contrast .contact-wrap,
+  body.a11y-contrast .tag, body.a11y-contrast .a11y-panel, body.a11y-contrast header{
+    background:#000 !important;border-color:#fff !important;
+  }
+  body.a11y-contrast .section-sub, body.a11y-contrast .card p, body.a11y-contrast .step p,
+  body.a11y-contrast .contact-info p, body.a11y-contrast .contact-info li, body.a11y-contrast nav,
+  body.a11y-contrast footer, body.a11y-contrast .tag{
+    color:#fff !important;
+  }
+  body.a11y-underline a{text-decoration:underline !important;}
+
+  @media (max-width:768px){
+    .a11y-fab{width:46px;height:46px;font-size:1.2rem;bottom:16px;right:16px;}
+    .a11y-panel{bottom:74px;right:16px;width:min(240px, calc(100vw - 32px));}
+  }
+
+  /* Mobile */
+  @media (max-width:768px){
+    header .container{padding:14px 18px;}
+    .logo{font-size:1rem;gap:8px;}
+    .logo-badge{width:30px;height:30px;font-size:1rem;}
+    nav{display:none;}
+    .cta-btn{padding:9px 16px;font-size:0.85rem;}
+    .hero{padding:56px 0 48px;}
+    .hero p.lead{font-size:1rem;padding:0 8px;}
+    .hero-ctas{gap:12px;}
+    .hero-ctas a{width:100%;text-align:center;}
+    section{padding:48px 0;}
+    .section-sub{margin-bottom:32px;padding:0 8px;}
+    .card, .step{padding:22px 18px;}
+    .contact-wrap{border-radius:18px;}
+    .wa-fab{width:50px;height:50px;font-size:1.4rem;bottom:16px;left:16px;}
+  }
+  @media (max-width:400px){
+    .container{padding:0 16px;}
+    .hero h1{font-size:1.7rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo"><div class="logo-badge">🤖</div> שילה ליאטו</div>
+    <nav>
+      <a href="#features">מה מקבלים</a>
+      <a href="#how">איך זה עובד</a>
+      <a href="#usecases">שימושים</a>
+      <a href="#contact">צור קשר</a>
+    </nav>
+    <a href="#contact" class="cta-btn">השאירו פרטים</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">🟢 בניית בוטים חכמים לוואטסאפ</span>
+    <h1>הבוט של <span>העסק שלכם</span><br>עונה בוואטסאפ, גם כשאתם ישנים</h1>
+    <p class="lead">
+      אני בונה בוטים מבוססי בינה מלאכותית לוואטסאפ - עונים ללקוחות, קובעים פגישות, שולחים תזכורות
+      ומענים אוטומטיים 24/7, בהתאמה אישית מלאה לעסק שלכם.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="cta-btn">קבלו הצעת מחיר חינם</a>
+      <a href="#how" class="btn-secondary">איך זה עובד?</a>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <h2 class="section-title">מה תקבלו</h2>
+    <p class="section-sub">בוט שבנוי בדיוק סביב הצרכים שלכם, לא תבנית גנרית.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>מענה אוטומטי חכם</h3>
+        <p>הבוט מבין שפה טבעית ועונה ללקוחות כאילו מדברים עם נציג אנושי.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📅</div>
+        <h3>תיאום פגישות ותורים</h3>
+        <p>קביעת פגישות ישירות מוואטסאפ, כולל סנכרון ליומן שלכם.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔔</div>
+        <h3>תזכורות ומעקב</h3>
+        <p>שליחת תזכורות אוטומטיות ומעקב אחרי לקוחות שלא ענו.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🛠️</div>
+        <h3>התאמה אישית מלאה</h3>
+        <p>טון דיבור, ידע על העסק, ותהליכים שמותאמים בדיוק אליכם.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📈</div>
+        <h3>חיסכון בזמן וכסף</h3>
+        <p>פחות זמן על מענה ידני, יותר זמן להתמקד בעסק.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔌</div>
+        <h3>חיבור למערכות שלכם</h3>
+        <p>אינטגרציה עם CRM, יומן גוגל, מייל ועוד כלים שכבר עובדים איתם.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:var(--bg2);">
+  <div class="container">
+    <h2 class="section-title">איך זה עובד</h2>
+    <p class="section-sub">תהליך פשוט, ברור ובלי כאבי ראש טכניים.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>שיחת אפיון</h3>
+        <p>מבינים יחד מה הבוט צריך לעשות, מי הלקוחות שלכם ואיך הם פונים אליכם היום.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>בנייה והתאמה</h3>
+        <p>בונה עבורכם את הבוט, מחבר אותו לוואטסאפ ובודק אותו על תרחישים אמיתיים.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>השקה וליווי</h3>
+        <p>הבוט עולה לאוויר, ואני נשאר זמין לשיפורים, עדכונים ותמיכה שוטפת.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="usecases">
+  <div class="container">
+    <h2 class="section-title">מתאים במיוחד ל...</h2>
+    <p class="section-sub">כל עסק שרוצה לתת מענה מהיר יותר ללקוחות שלו.</p>
+    <div class="usecases">
+      <span class="tag">קליניקות ומרפאות</span>
+      <span class="tag">חנויות אונליין</span>
+      <span class="tag">נדל"ן</span>
+      <span class="tag">מסעדות ומשלוחים</span>
+      <span class="tag">סטודיו וקורסים</span>
+      <span class="tag">שירותי תמיכה</span>
+      <span class="tag">עסקי שירות ופרילנסרים</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--bg2);">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h2>בואו נדבר</h2>
+        <p>השאירו פרטים ואחזור אליכם תוך יום עסקים עם הצעה מותאמת אישית - ללא עלות וללא התחייבות.</p>
+        <ul>
+          <li><span class="dot"></span> ייעוץ ראשוני חינם</li>
+          <li><span class="dot"></span> הצעת מחיר מותאמת אישית</li>
+          <li><span class="dot"></span> מענה מהיר תוך יום עסקים</li>
+        </ul>
+      </div>
+      <div>
+        <form id="lead-form" action="https://formspree.io/f/meeydzqd" method="POST">
+          <label for="name">שם מלא</label>
+          <input type="text" id="name" name="name" placeholder="איך קוראים לך?" required>
+
+          <label for="phone">טלפון</label>
+          <input type="tel" id="phone" name="phone" placeholder="050-0000000" required>
+
+          <label for="email">אימייל</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com">
+
+          <label for="business">שם העסק</label>
+          <input type="text" id="business" name="business" placeholder="שם העסק שלך">
+
+          <label for="message">קצת על מה שאתם צריכים</label>
+          <textarea id="message" name="message" placeholder="ספרו לי איזה בוט אתם מחפשים..."></textarea>
+
+          <button type="submit">שלחו לי פרטים</button>
+          <div class="success-msg" id="success-msg">תודה! הפרטים התקבלו, אחזור אליכם בהקדם 🙌</div>
+          <div class="error-msg" id="error-msg">משהו השתבש בשליחה, נסו שוב או צרו קשר בוואטסאפ.</div>
+          <p class="form-note">הפרטים שלכם נשארים חסויים ומשמשים רק ליצירת קשר.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> שילה ליאטו · בניית בוטים חכמים לוואטסאפ</p>
+    <p>או פשוט תכתבו לי ישירות ב<a class="wa-float" href="https://wa.me/972556613023" target="_blank" rel="noopener">וואטסאפ</a></p>
+  </div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/972556613023" target="_blank" rel="noopener" title="דברו איתי בוואטסאפ">💬</a>
+
+<button class="a11y-fab" id="a11y-toggle" aria-label="פתיחת תפריט נגישות" title="נגישות">♿</button>
+<div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="תפריט נגישות">
+  <div class="a11y-panel-header">
+    <span>נגישות</span>
+    <button id="a11y-close" aria-label="סגירת תפריט נגישות">✕</button>
+  </div>
+  <button class="a11y-option" data-action="font-inc">הגדלת טקסט A+</button>
+  <button class="a11y-option" data-action="font-dec">הקטנת טקסט A-</button>
+  <button class="a11y-option" data-action="contrast">ניגודיות גבוהה</button>
+  <button class="a11y-option" data-action="underline">הדגשת קישורים</button>
+  <button class="a11y-option" data-action="reset">איפוס נגישות</button>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('lead-form');
+  const successMsg = document.getElementById('success-msg');
+  const errorMsg = document.getElementById('error-msg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+
+    const data = new FormData(form);
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.reset();
+        successMsg.style.display = 'block';
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    } catch (err) {
+      errorMsg.style.display = 'block';
+    }
+  });
+
+  /* Accessibility widget */
+  const a11yToggle = document.getElementById('a11y-toggle');
+  const a11yPanel = document.getElementById('a11y-panel');
+  const a11yClose = document.getElementById('a11y-close');
+  let fontStep = parseInt(localStorage.getItem('a11yFontStep') || '0', 10);
+
+  function applyFontStep(){
+    document.documentElement.style.fontSize = (100 + fontStep * 10) + '%';
+    localStorage.setItem('a11yFontStep', fontStep);
+  }
+  applyFontStep();
+
+  if (localStorage.getItem('a11yContrast') === '1') document.body.classList.add('a11y-contrast');
+  if (localStorage.getItem('a11yUnderline') === '1') document.body.classList.add('a11y-underline');
+
+  a11yToggle.addEventListener('click', () => a11yPanel.classList.toggle('open'));
+  a11yClose.addEventListener('click', () => a11yPanel.classList.remove('open'));
+
+  document.querySelectorAll('.a11y-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.dataset.action;
+      if (action === 'font-inc' && fontStep < 4) { fontStep++; applyFontStep(); }
+      if (action === 'font-dec' && fontStep > -2) { fontStep--; applyFontStep(); }
+      if (action === 'contrast') {
+        document.body.classList.toggle('a11y-contrast');
+        localStorage.setItem('a11yContrast', document.body.classList.contains('a11y-contrast') ? '1' : '0');
+      }
+      if (action === 'underline') {
+        document.body.classList.toggle('a11y-underline');
+        localStorage.setItem('a11yUnderline', document.body.classList.contains('a11y-underline') ? '1' : '0');
+      }
+      if (action === 'reset') {
+        fontStep = 0; applyFontStep();
+        document.body.classList.remove('a11y-contrast', 'a11y-underline');
+        localStorage.setItem('a11yContrast', '0');
+        localStorage.setItem('a11yUnderline', '0');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
