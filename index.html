@@ -21,15 +21,15 @@
 
 <style>
   :root{
-    --bg:#0a0e1a;
-    --bg2:#0d1524;
-    --card:#111c33;
-    --card-border:#1e2f4d;
-    --text:#eaf0fb;
-    --text-dim:#9fb0cc;
-    --accent:#3b82f6;
-    --accent-dark:#2563eb;
-    --accent-glow: rgba(59,130,246,0.35);
+    --bg:#071c30;
+    --bg2:#0a2540;
+    --card:#0f2f4d;
+    --card-border:#1d4569;
+    --text:#eaf4fb;
+    --text-dim:#9dc0dc;
+    --accent:#38bdf8;
+    --accent-dark:#0ea5e9;
+    --accent-glow: rgba(56,189,248,0.35);
     --wa-green:#25D366;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -47,7 +47,7 @@
   /* Header */
   header{
     position:sticky;top:0;z-index:50;
-    background:rgba(11,20,16,0.85);
+    background:rgba(7,28,48,0.85);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--card-border);
   }
@@ -144,7 +144,7 @@
   .card .icon{
     margin-bottom:14px;
     width:50px;height:50px;border-radius:12px;
-    background:rgba(59,130,246,0.15);
+    background:rgba(56,189,248,0.15);
     display:flex;align-items:center;justify-content:center;
     color:var(--accent);
   }
@@ -197,6 +197,22 @@
   .about-photo img{
     width:100%;height:auto;display:block;
     filter:drop-shadow(0 12px 30px rgba(0,0,0,0.5));
+  }
+  .about-photo.reveal{transform:translateY(28px) scale(0.88);}
+  .about-photo.reveal.visible{transform:translateY(0) scale(1);}
+
+  /* Persistent small avatar that follows scroll until the about section takes over */
+  .floating-avatar{
+    position:fixed;top:84px;left:24px;z-index:45;
+    width:44px;height:44px;border-radius:50%;object-fit:cover;
+    border:2px solid var(--accent);box-shadow:0 6px 18px rgba(0,0,0,0.45);
+    opacity:0;transform:translateY(-12px) scale(0.8);
+    transition:opacity .35s ease, transform .35s ease;
+    pointer-events:none;
+  }
+  .floating-avatar.show{opacity:1;transform:translateY(0) scale(1);}
+  @media (max-width:768px){
+    .floating-avatar{top:70px;left:14px;width:36px;height:36px;}
   }
   .about-photo-placeholder{
     width:100%;height:100%;border-radius:20px;
@@ -337,11 +353,11 @@
   }
   .shape-2{
     top:1400px;left:2%;right:auto;width:340px;height:340px;
-    background:radial-gradient(circle, rgba(59,130,246,0.28) 0%, transparent 70%);
+    background:radial-gradient(circle, rgba(56,189,248,0.28) 0%, transparent 70%);
   }
   .shape-3{
     top:2700px;right:0;left:auto;width:500px;height:500px;
-    background:radial-gradient(circle, rgba(37,99,235,0.22) 0%, transparent 70%);
+    background:radial-gradient(circle, rgba(14,165,233,0.22) 0%, transparent 70%);
   }
   .shape-4{
     top:3900px;left:8%;right:auto;width:300px;height:300px;
@@ -408,6 +424,8 @@
     <a href="#contact" class="cta-btn">השאירו פרטים</a>
   </div>
 </header>
+
+<img src="about-me.png" alt="שילה ליאטו" class="floating-avatar" id="floating-avatar">
 
 <section class="hero">
   <div class="container">
@@ -701,6 +719,29 @@
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
   revealTargets.forEach(el => revealObserver.observe(el));
+
+  /* Floating avatar: appears once past the hero, disappears when the real photo takes over in #about */
+  const floatingAvatar = document.getElementById('floating-avatar');
+  const heroEl = document.querySelector('.hero');
+  const aboutEl = document.getElementById('about');
+  let pastHero = false;
+  let aboutInView = false;
+
+  function updateAvatarVisibility(){
+    floatingAvatar.classList.toggle('show', pastHero && !aboutInView);
+  }
+
+  window.addEventListener('scroll', () => {
+    pastHero = window.scrollY > heroEl.offsetTop + heroEl.offsetHeight - 80;
+    updateAvatarVisibility();
+  }, { passive: true });
+
+  new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      aboutInView = entry.isIntersecting;
+      updateAvatarVisibility();
+    });
+  }, { threshold: 0, rootMargin: '-40% 0px -40% 0px' }).observe(aboutEl);
 </script>
 
 </body>
