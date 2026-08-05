@@ -133,7 +133,12 @@
     .grid{grid-template-columns:repeat(2,1fr);}
   }
   @media (max-width:560px){
-    .grid{grid-template-columns:1fr;}
+    .grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .card{padding:16px 12px;border-radius:12px;}
+    .card .icon{width:36px;height:36px;border-radius:9px;margin-bottom:8px;}
+    .card .icon svg{width:18px;height:18px;}
+    .card h3{font-size:0.9rem;margin-bottom:4px;}
+    .card p{font-size:0.78rem;line-height:1.4;}
   }
   .card{
     background:var(--card);border:1px solid var(--card-border);
