@@ -306,6 +306,7 @@
   .wa-widget{
     position:fixed;bottom:24px;left:24px;z-index:60;
     display:flex;align-items:center;gap:10px;
+    max-width:calc(100vw - 48px);
   }
   .wa-fab{
     width:58px;height:58px;border-radius:50%;flex-shrink:0;
@@ -317,14 +318,17 @@
   .wa-fab svg{width:28px;height:28px;}
   .wa-fab:hover{transform:scale(1.08);}
   .wa-callout{
-    display:flex;align-items:center;gap:8px;
+    display:flex;align-items:center;gap:8px;min-width:0;
     background:var(--card);border:1px solid var(--card-border);
-    padding:9px 16px;border-radius:999px;white-space:nowrap;
+    padding:9px 16px;border-radius:999px;
     box-shadow:0 6px 20px rgba(0,0,0,0.4);
     font-size:0.85rem;font-weight:600;color:var(--text);
     animation:wa-callout-bounce 2.4s ease-in-out infinite;
   }
   .wa-callout svg{width:20px;height:20px;color:var(--wa-green);flex-shrink:0;}
+  .wa-callout span{
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;
+  }
   @keyframes wa-callout-bounce{
     0%, 100%{transform:translateY(0);}
     50%{transform:translateY(-4px);}
