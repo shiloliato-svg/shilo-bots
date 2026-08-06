@@ -184,6 +184,21 @@
     padding:12px 20px;border-radius:12px;font-size:0.95rem;color:var(--text-dim);
   }
 
+  /* Demo video */
+  .demo-video-wrap{
+    display:flex;justify-content:center;
+  }
+  .demo-video{
+    width:100%;max-width:340px;border-radius:20px;
+    border:1px solid var(--card-border);
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+    background:#000;
+    display:block;
+  }
+  @media (max-width:768px){
+    .demo-video{max-width:280px;border-radius:16px;}
+  }
+
   /* About */
   .about-wrap{
     display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start;
@@ -449,6 +464,7 @@
       <a href="#features">מה מקבלים</a>
       <a href="#how">איך זה עובד</a>
       <a href="#usecases">שימושים</a>
+      <a href="#demo">וידאו</a>
       <a href="#about">עליי</a>
       <a href="#contact">צור קשר</a>
     </nav>
@@ -548,6 +564,18 @@
       <span class="tag">סטודיו וקורסים</span>
       <span class="tag">שירותי תמיכה</span>
       <span class="tag">עסקי שירות ופרילנסרים</span>
+    </div>
+  </div>
+</section>
+
+<section id="demo" style="background:var(--bg2);">
+  <div class="container">
+    <h2 class="section-title">ראו את הבוט בפעולה</h2>
+    <p class="section-sub">הקלטת מסך אמיתית מתוך שיחה עם אחד הבוטים שבניתי.</p>
+    <div class="demo-video-wrap">
+      <video class="demo-video" controls playsinline preload="metadata" poster="demo-video-poster.jpg">
+        <source src="demo-video.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
@@ -740,7 +768,7 @@
 
   /* Scroll reveal */
   const revealTargets = document.querySelectorAll(
-    '.section-title, .section-sub, .card, .step, .tag, .about-photo, .about-text > *, .contact-wrap'
+    '.section-title, .section-sub, .card, .step, .tag, .demo-video, .about-photo, .about-text > *, .contact-wrap'
   );
   revealTargets.forEach((el, i) => {
     el.classList.add('reveal');
