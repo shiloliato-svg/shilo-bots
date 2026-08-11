@@ -303,6 +303,35 @@
   }
   footer a.wa-float{color:var(--wa-green);font-weight:700;}
 
+  /* Testimonials marquee */
+  .testimonials-track-wrap{
+    overflow:hidden;width:100%;
+    mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .testimonials-track{
+    display:flex;gap:20px;width:max-content;
+    animation:testimonials-scroll 42s linear infinite;
+  }
+  .testimonials-track-wrap:hover .testimonials-track{animation-play-state:paused;}
+  @keyframes testimonials-scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  .t-card{
+    flex:0 0 auto;width:300px;
+    background:var(--card);border:1px solid var(--card-border);border-radius:16px;
+    padding:22px 20px;
+  }
+  .t-card p{
+    color:var(--text);font-size:0.92rem;line-height:1.6;margin-bottom:14px;
+  }
+  .t-author{color:var(--accent);font-weight:700;font-size:0.85rem;}
+  @media (max-width:768px){
+    .t-card{width:240px;padding:18px 16px;}
+    .t-card p{font-size:0.85rem;}
+  }
+
   /* WhatsApp floating button + callout */
   .wa-widget{
     position:fixed;bottom:24px;left:24px;z-index:60;
@@ -615,6 +644,29 @@
         <p>אני מאמין שכל עסק יכול לחסוך זמן, כסף ועבודה ידנית באמצעות AI, כל עוד בונים את הפתרון הנכון עבורו.</p>
         <p>הסיפור שלי התחיל מספר אחד שאמא שלי יצרה באהבה. היום הוא ממשיך דרך טכנולוגיה, חדשנות והרצון לעזור לעסקים לצמוח - ואני בטוח שזו רק ההתחלה.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <h2 class="section-title">לקוחות ממליצים</h2>
+    <p class="section-sub">מה שעסקים אמיתיים אמרו לי אחרי שהבוט נכנס לעבודה.</p>
+  </div>
+  <div class="testimonials-track-wrap">
+    <div class="testimonials-track">
+      <div class="t-card"><p>&ldquo;הבוט סוגר לי פגישות בזמן שאני בלקוח אחר. תוך שבועיים ראיתי עלייה של ממש בפגישות שנסגרו.&rdquo;</p><div class="t-author">מיכל אזולאי · קליניקת פיזיותרפיה</div></div>
+      <div class="t-card"><p>&ldquo;הפסקתי לפספס לידים בשעות שאני סגור. הבוט עונה על שאלות מחיר ומלאי לפני שהלקוח בכלל התייאש.&rdquo;</p><div class="t-author">אבי כהן · חנות ריהוט</div></div>
+      <div class="t-card"><p>&ldquo;חסכתי בערך 3 שעות ביום שהיו הולכות על מענה לשאלות חוזרות. פשוט שינה לי את היום-יום בעסק.&rdquo;</p><div class="t-author">שירן לוי · סטודיו יוגה</div></div>
+      <div class="t-card"><p>&ldquo;הלקוחות מקבלים תשובה מיידית גם ב-3 בלילה. שיעור ההמרה שלנו עלה משמעותית מאז שהתקנו.&rdquo;</p><div class="t-author">רון פרידמן · מסעדה למשלוחים</div></div>
+      <div class="t-card"><p>&ldquo;כעצמאית אין לי זמן לענות לכל הודעה. הבוט מסנן לי מי רציני ומעביר אליי רק את מה שדורש תשומת לב שלי.&rdquo;</p><div class="t-author">נועה ברק · פרילנסרית עיצוב</div></div>
+      <div class="t-card"><p>&ldquo;ההגדרה הראשונית לקחה יומיים, ומאז הבוט עובד בשבילי 24/7. תשואה על השקעה שלא ראיתי בשום כלי אחר.&rdquo;</p><div class="t-author">עידן שרון · נדל"ן</div></div>
+      <div class="t-card"><p>&ldquo;הבוט סוגר לי פגישות בזמן שאני בלקוח אחר. תוך שבועיים ראיתי עלייה של ממש בפגישות שנסגרו.&rdquo;</p><div class="t-author">מיכל אזולאי · קליניקת פיזיותרפיה</div></div>
+      <div class="t-card"><p>&ldquo;הפסקתי לפספס לידים בשעות שאני סגור. הבוט עונה על שאלות מחיר ומלאי לפני שהלקוח בכלל התייאש.&rdquo;</p><div class="t-author">אבי כהן · חנות ריהוט</div></div>
+      <div class="t-card"><p>&ldquo;חסכתי בערך 3 שעות ביום שהיו הולכות על מענה לשאלות חוזרות. פשוט שינה לי את היום-יום בעסק.&rdquo;</p><div class="t-author">שירן לוי · סטודיו יוגה</div></div>
+      <div class="t-card"><p>&ldquo;הלקוחות מקבלים תשובה מיידית גם ב-3 בלילה. שיעור ההמרה שלנו עלה משמעותית מאז שהתקנו.&rdquo;</p><div class="t-author">רון פרידמן · מסעדה למשלוחים</div></div>
+      <div class="t-card"><p>&ldquo;כעצמאית אין לי זמן לענות לכל הודעה. הבוט מסנן לי מי רציני ומעביר אליי רק את מה שדורש תשומת לב שלי.&rdquo;</p><div class="t-author">נועה ברק · פרילנסרית עיצוב</div></div>
+      <div class="t-card"><p>&ldquo;ההגדרה הראשונית לקחה יומיים, ומאז הבוט עובד בשבילי 24/7. תשואה על השקעה שלא ראיתי בשום כלי אחר.&rdquo;</p><div class="t-author">עידן שרון · נדל"ן</div></div>
     </div>
   </div>
 </section>
