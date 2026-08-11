@@ -310,10 +310,11 @@
     -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
   .testimonials-track{
-    display:flex;gap:20px;width:max-content;
+    display:flex;width:max-content;
     animation:testimonials-scroll 42s linear infinite;
   }
   .testimonials-track-wrap:hover .testimonials-track{animation-play-state:paused;}
+  .t-group{display:flex;gap:20px;padding-inline-end:20px;}
   @keyframes testimonials-scroll{
     0%{transform:translateX(0);}
     100%{transform:translateX(-50%);}
@@ -655,18 +656,22 @@
   </div>
   <div class="testimonials-track-wrap">
     <div class="testimonials-track">
-      <div class="t-card"><p>&ldquo;הבוט סוגר לי פגישות בזמן שאני בלקוח אחר. תוך שבועיים ראיתי עלייה של ממש בפגישות שנסגרו.&rdquo;</p><div class="t-author">מיכל אזולאי · קליניקת פיזיותרפיה</div></div>
-      <div class="t-card"><p>&ldquo;הפסקתי לפספס לידים בשעות שאני סגור. הבוט עונה על שאלות מחיר ומלאי לפני שהלקוח בכלל התייאש.&rdquo;</p><div class="t-author">אבי כהן · חנות ריהוט</div></div>
-      <div class="t-card"><p>&ldquo;חסכתי בערך 3 שעות ביום שהיו הולכות על מענה לשאלות חוזרות. פשוט שינה לי את היום-יום בעסק.&rdquo;</p><div class="t-author">שירן לוי · סטודיו יוגה</div></div>
-      <div class="t-card"><p>&ldquo;הלקוחות מקבלים תשובה מיידית גם ב-3 בלילה. שיעור ההמרה שלנו עלה משמעותית מאז שהתקנו.&rdquo;</p><div class="t-author">רון פרידמן · מסעדה למשלוחים</div></div>
-      <div class="t-card"><p>&ldquo;כעצמאית אין לי זמן לענות לכל הודעה. הבוט מסנן לי מי רציני ומעביר אליי רק את מה שדורש תשומת לב שלי.&rdquo;</p><div class="t-author">נועה ברק · פרילנסרית עיצוב</div></div>
-      <div class="t-card"><p>&ldquo;ההגדרה הראשונית לקחה יומיים, ומאז הבוט עובד בשבילי 24/7. תשואה על השקעה שלא ראיתי בשום כלי אחר.&rdquo;</p><div class="t-author">עידן שרון · נדל"ן</div></div>
-      <div class="t-card"><p>&ldquo;הבוט סוגר לי פגישות בזמן שאני בלקוח אחר. תוך שבועיים ראיתי עלייה של ממש בפגישות שנסגרו.&rdquo;</p><div class="t-author">מיכל אזולאי · קליניקת פיזיותרפיה</div></div>
-      <div class="t-card"><p>&ldquo;הפסקתי לפספס לידים בשעות שאני סגור. הבוט עונה על שאלות מחיר ומלאי לפני שהלקוח בכלל התייאש.&rdquo;</p><div class="t-author">אבי כהן · חנות ריהוט</div></div>
-      <div class="t-card"><p>&ldquo;חסכתי בערך 3 שעות ביום שהיו הולכות על מענה לשאלות חוזרות. פשוט שינה לי את היום-יום בעסק.&rdquo;</p><div class="t-author">שירן לוי · סטודיו יוגה</div></div>
-      <div class="t-card"><p>&ldquo;הלקוחות מקבלים תשובה מיידית גם ב-3 בלילה. שיעור ההמרה שלנו עלה משמעותית מאז שהתקנו.&rdquo;</p><div class="t-author">רון פרידמן · מסעדה למשלוחים</div></div>
-      <div class="t-card"><p>&ldquo;כעצמאית אין לי זמן לענות לכל הודעה. הבוט מסנן לי מי רציני ומעביר אליי רק את מה שדורש תשומת לב שלי.&rdquo;</p><div class="t-author">נועה ברק · פרילנסרית עיצוב</div></div>
-      <div class="t-card"><p>&ldquo;ההגדרה הראשונית לקחה יומיים, ומאז הבוט עובד בשבילי 24/7. תשואה על השקעה שלא ראיתי בשום כלי אחר.&rdquo;</p><div class="t-author">עידן שרון · נדל"ן</div></div>
+      <div class="t-group">
+        <div class="t-card"><p>&ldquo;הבוט סוגר לי פגישות בזמן שאני בלקוח אחר. תוך שבועיים ראיתי עלייה של ממש בפגישות שנסגרו.&rdquo;</p><div class="t-author">מיכל אזולאי · קליניקת פיזיותרפיה</div></div>
+        <div class="t-card"><p>&ldquo;הפסקתי לפספס לידים בשעות שאני סגור. הבוט עונה על שאלות מחיר ומלאי לפני שהלקוח בכלל התייאש.&rdquo;</p><div class="t-author">אבי כהן · חנות ריהוט</div></div>
+        <div class="t-card"><p>&ldquo;חסכתי בערך 3 שעות ביום שהיו הולכות על מענה לשאלות חוזרות. פשוט שינה לי את היום-יום בעסק.&rdquo;</p><div class="t-author">שירן לוי · סטודיו יוגה</div></div>
+        <div class="t-card"><p>&ldquo;הלקוחות מקבלים תשובה מיידית גם ב-3 בלילה. שיעור ההמרה שלנו עלה משמעותית מאז שהתקנו.&rdquo;</p><div class="t-author">רון פרידמן · מסעדה למשלוחים</div></div>
+        <div class="t-card"><p>&ldquo;כעצמאית אין לי זמן לענות לכל הודעה. הבוט מסנן לי מי רציני ומעביר אליי רק את מה שדורש תשומת לב שלי.&rdquo;</p><div class="t-author">נועה ברק · פרילנסרית עיצוב</div></div>
+        <div class="t-card"><p>&ldquo;ההגדרה הראשונית לקחה יומיים, ומאז הבוט עובד בשבילי 24/7. תשואה על השקעה שלא ראיתי בשום כלי אחר.&rdquo;</p><div class="t-author">עידן שרון · נדל"ן</div></div>
+      </div>
+      <div class="t-group" aria-hidden="true">
+        <div class="t-card"><p>&ldquo;הבוט סוגר לי פגישות בזמן שאני בלקוח אחר. תוך שבועיים ראיתי עלייה של ממש בפגישות שנסגרו.&rdquo;</p><div class="t-author">מיכל אזולאי · קליניקת פיזיותרפיה</div></div>
+        <div class="t-card"><p>&ldquo;הפסקתי לפספס לידים בשעות שאני סגור. הבוט עונה על שאלות מחיר ומלאי לפני שהלקוח בכלל התייאש.&rdquo;</p><div class="t-author">אבי כהן · חנות ריהוט</div></div>
+        <div class="t-card"><p>&ldquo;חסכתי בערך 3 שעות ביום שהיו הולכות על מענה לשאלות חוזרות. פשוט שינה לי את היום-יום בעסק.&rdquo;</p><div class="t-author">שירן לוי · סטודיו יוגה</div></div>
+        <div class="t-card"><p>&ldquo;הלקוחות מקבלים תשובה מיידית גם ב-3 בלילה. שיעור ההמרה שלנו עלה משמעותית מאז שהתקנו.&rdquo;</p><div class="t-author">רון פרידמן · מסעדה למשלוחים</div></div>
+        <div class="t-card"><p>&ldquo;כעצמאית אין לי זמן לענות לכל הודעה. הבוט מסנן לי מי רציני ומעביר אליי רק את מה שדורש תשומת לב שלי.&rdquo;</p><div class="t-author">נועה ברק · פרילנסרית עיצוב</div></div>
+        <div class="t-card"><p>&ldquo;ההגדרה הראשונית לקחה יומיים, ומאז הבוט עובד בשבילי 24/7. תשואה על השקעה שלא ראיתי בשום כלי אחר.&rdquo;</p><div class="t-author">עידן שרון · נדל"ן</div></div>
+      </div>
     </div>
   </div>
 </section>
