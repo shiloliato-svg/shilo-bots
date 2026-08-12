@@ -666,7 +666,7 @@
     <h2 class="section-title">ראו את הבוט בפעולה</h2>
     <p class="section-sub">הקלטת מסך אמיתית מתוך שיחה עם אחד הבוטים שבניתי.</p>
     <div class="demo-video-wrap">
-      <video class="demo-video" controls playsinline preload="metadata" poster="demo-video-poster.jpg">
+      <video class="demo-video" controls playsinline muted preload="metadata" poster="demo-video-poster.jpg">
         <source src="demo-video.mp4" type="video/mp4">
       </video>
     </div>
@@ -876,6 +876,21 @@
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
   revealTargets.forEach(el => revealObserver.observe(el));
+
+  /* Demo video: autoplay (muted) when scrolled into view, pause when scrolled away */
+  const demoVideo = document.querySelector('.demo-video');
+  if (demoVideo) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          demoVideo.play().catch(() => {});
+        } else {
+          demoVideo.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+    videoObserver.observe(demoVideo);
+  }
 
   /* Floating avatar: visible immediately, disappears when the real photo takes over in #about */
   const floatingAvatar = document.getElementById('floating-avatar');
