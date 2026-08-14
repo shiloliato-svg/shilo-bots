@@ -711,8 +711,8 @@
       </div>
       <div>
         <form id="lead-form" action="https://formspree.io/f/meeydzqd" method="POST">
-          <input type="hidden" name="_subject" value="השאירו פרטים באתר שלך! כנס לראות מי זה">
-          <input type="hidden" name="_replyto" value="">
+          <input type="hidden" name="subject" value="השאירו פרטים באתר שלך! כנס לראות מי זה">
+          <input type="hidden" name="email" value="">
 
           <label for="name">שם מלא</label>
           <input type="text" id="name" name="שם מלא" placeholder="איך קוראים לך?" required>
@@ -784,7 +784,7 @@
     e.preventDefault();
     successMsg.style.display = 'none';
     errorMsg.style.display = 'none';
-    form.querySelector('input[name="_replyto"]').value = document.getElementById('email').value;
+    form.querySelector('input[name="email"]').value = document.getElementById('email').value;
 
     const data = new FormData(form);
     try {
