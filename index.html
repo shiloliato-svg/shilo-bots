@@ -877,9 +877,14 @@
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
   revealTargets.forEach(el => revealObserver.observe(el));
 
-  /* Demo video: autoplay (muted) when scrolled into view, pause when scrolled away */
+  /* Demo video: autoplay when scrolled into view, pause when scrolled away.
+     Browsers block autoplay-with-sound until the user has interacted with the
+     page at all, so it starts muted and unmutes itself after the first click/key. */
   const demoVideo = document.querySelector('.demo-video');
   if (demoVideo) {
+    const unlockSound = () => { demoVideo.muted = false; };
+    ['pointerdown', 'keydown'].forEach(evt => document.addEventListener(evt, unlockSound, { once: true }));
+
     const videoObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
