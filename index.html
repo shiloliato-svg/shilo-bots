@@ -711,20 +711,23 @@
       </div>
       <div>
         <form id="lead-form" action="https://formspree.io/f/meeydzqd" method="POST">
+          <input type="hidden" name="_subject" value="השאירו פרטים באתר שלך! כנס לראות מי זה">
+          <input type="hidden" name="_replyto" value="">
+
           <label for="name">שם מלא</label>
-          <input type="text" id="name" name="name" placeholder="איך קוראים לך?" required>
+          <input type="text" id="name" name="שם מלא" placeholder="איך קוראים לך?" required>
 
           <label for="phone">טלפון</label>
-          <input type="tel" id="phone" name="phone" placeholder="050-0000000" required>
+          <input type="tel" id="phone" name="טלפון" placeholder="050-0000000" required>
 
           <label for="email">אימייל</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com">
+          <input type="email" id="email" name="אימייל" placeholder="you@example.com">
 
           <label for="business">שם העסק</label>
-          <input type="text" id="business" name="business" placeholder="שם העסק שלך">
+          <input type="text" id="business" name="שם העסק" placeholder="שם העסק שלך">
 
           <label for="message">קצת על מה שאתם צריכים</label>
-          <textarea id="message" name="message" placeholder="ספרו לי איזה בוט אתם מחפשים..."></textarea>
+          <textarea id="message" name="פרטים נוספים" placeholder="ספרו לי איזה בוט אתם מחפשים..."></textarea>
 
           <button type="submit">שלחו לי פרטים</button>
           <div class="success-msg" id="success-msg">תודה! הפרטים התקבלו, אחזור אליכם בהקדם.</div>
@@ -781,6 +784,7 @@
     e.preventDefault();
     successMsg.style.display = 'none';
     errorMsg.style.display = 'none';
+    form.querySelector('input[name="_replyto"]').value = document.getElementById('email').value;
 
     const data = new FormData(form);
     try {
