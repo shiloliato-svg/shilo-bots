@@ -206,9 +206,74 @@
     .hero{padding:52px 0 40px;}
     section{padding:44px 0;}
   }
+
+  /* Persistent small avatar that follows scroll until the about section takes over */
+  .floating-avatar{
+    position:fixed;top:78px;left:24px;z-index:45;
+    width:110px;height:auto;
+    filter:drop-shadow(0 8px 18px rgba(0,0,0,0.5));
+    opacity:0;transform:translateY(-12px) scale(0.8);
+    transition:opacity .35s ease, transform .35s ease;
+    pointer-events:none;
+  }
+  .floating-avatar.show{opacity:1;transform:translateY(0) scale(1);}
+  @media (max-width:768px){
+    .floating-avatar{top:64px;left:12px;width:78px;}
+  }
+
+  /* Parallax background shapes */
+  .parallax-shape{
+    position:absolute;left:0;right:0;margin:0 auto;
+    max-width:90vw;
+    border-radius:50%;pointer-events:none;z-index:0;
+    filter:blur(60px);opacity:0.4;will-change:transform;
+  }
+  .shape-1{
+    top:60px;right:5%;left:auto;width:420px;height:420px;
+    background:radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  }
+  .shape-2{
+    top:1000px;left:2%;right:auto;width:340px;height:340px;
+    background:radial-gradient(circle, rgba(56,189,248,0.28) 0%, transparent 70%);
+  }
+  .shape-3{
+    top:2000px;right:0;left:auto;width:500px;height:500px;
+    background:radial-gradient(circle, rgba(14,165,233,0.22) 0%, transparent 70%);
+  }
+  .shape-4{
+    top:2900px;left:8%;right:auto;width:300px;height:300px;
+    background:radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  }
+
+  /* Scroll reveal */
+  .reveal{
+    opacity:0;transform:translateY(28px);
+    transition:opacity .7s cubic-bezier(.16,.8,.24,1), transform .7s cubic-bezier(.16,.8,.24,1);
+  }
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  @media (max-width:768px){
+    .parallax-shape{filter:blur(6px);opacity:0.35;}
+    .shape-1{width:220px;height:220px;top:30px;}
+    .shape-2{width:180px;height:180px;top:700px;}
+    .shape-3{width:240px;height:240px;top:1400px;}
+    .shape-4{width:160px;height:160px;top:2100px;}
+    .reveal{transform:translateY(16px);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
+    .parallax-shape{transform:none !important;}
+  }
 </style>
 </head>
 <body>
+
+<div class="parallax-shape shape-1" data-speed="0.25"></div>
+<div class="parallax-shape shape-2" data-speed="0.15"></div>
+<div class="parallax-shape shape-3" data-speed="0.35"></div>
+<div class="parallax-shape shape-4" data-speed="0.2"></div>
+
+<img src="../about-me.png" alt="שילה ליאטו" class="floating-avatar" id="floating-avatar">
 
 <header>
   <div class="container">
@@ -245,7 +310,7 @@
     <h2 class="section-title">ראו את זה בפעולה</h2>
     <p class="section-sub">הקלטת מסך אמיתית מתוך ה-CRM שבניתי.</p>
     <div class="demo-video-wrap">
-      <video class="demo-video" controls playsinline preload="metadata" poster="crm-demo-poster.jpg">
+      <video class="demo-video" controls playsinline muted preload="metadata" poster="crm-demo-poster.jpg">
         <source src="crm-demo-video.mp4" type="video/mp4">
       </video>
     </div>
@@ -399,6 +464,80 @@
       else { errorMsg.style.display = 'block'; }
     } catch (err) { errorMsg.style.display = 'block'; }
   });
+
+  /* Scroll-driven parallax shapes */
+  const parallaxShapes = document.querySelectorAll('.parallax-shape');
+  let ticking = false;
+  function updateParallax(){
+    const y = window.scrollY;
+    parallaxShapes.forEach(shape => {
+      const speed = parseFloat(shape.dataset.speed) || 0.2;
+      shape.style.transform = `translateY(${y * speed}px)`;
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+  updateParallax();
+
+  /* Scroll reveal */
+  const revealTargets = document.querySelectorAll(
+    '.section-title, .section-sub, .card, .step, .demo-video, .about-mini, .contact-wrap, .promise'
+  );
+  revealTargets.forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i % 6) * 60 + 'ms';
+  });
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealTargets.forEach(el => revealObserver.observe(el));
+
+  /* Demo video: autoplay when scrolled into view, pause when scrolled away.
+     Browsers block autoplay-with-sound until the user has interacted with the
+     page at all, so it starts muted and unmutes itself after the first click/key. */
+  const demoVideo = document.querySelector('.demo-video');
+  if (demoVideo) {
+    const unlockSound = () => { demoVideo.muted = false; };
+    ['pointerdown', 'keydown'].forEach(evt => document.addEventListener(evt, unlockSound, { once: true }));
+
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          demoVideo.play().catch(() => {});
+        } else {
+          demoVideo.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+    videoObserver.observe(demoVideo);
+  }
+
+  /* Floating avatar: visible immediately, disappears when the real photo takes over in #about */
+  const floatingAvatar = document.getElementById('floating-avatar');
+  const aboutEl = document.getElementById('about');
+  let aboutInView = false;
+
+  function updateAvatarVisibility(){
+    floatingAvatar.classList.toggle('show', !aboutInView);
+  }
+  updateAvatarVisibility();
+
+  new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      aboutInView = entry.isIntersecting;
+      updateAvatarVisibility();
+    });
+  }, { threshold: 0, rootMargin: '-40% 0px -40% 0px' }).observe(aboutEl);
 </script>
 
 </body>
