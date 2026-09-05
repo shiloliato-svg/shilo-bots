@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סקיל AI לפרסום ממומן ישראלי | שילה ליאטו</title>
+<meta name="description" content="קובץ הוראות אמיתי לקלוד (קוד פתוח) שהופך אותו למומחה פרסום ממומן ישראלי - עברית, מע״מ וחוקי צרכנות כלולים. הורידו בחינם.">
+
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="shortcut icon" href="../../favicon.ico">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="סקיל AI לפרסום ממומן ישראלי | שילה ליאטו">
+<meta property="og:description" content="קובץ הוראות אמיתי לקלוד (קוד פתוח) שהופך אותו למומחה פרסום ממומן ישראלי - עברית, מע״מ וחוקי צרכנות כלולים. הורידו בחינם.">
+<meta property="og:image" content="https://shiloliatoai.com/og-image.png">
+<meta property="og:url" content="https://shiloliatoai.com/skills/israeli-paid-ads/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="סקיל AI לפרסום ממומן ישראלי | שילה ליאטו">
+<meta name="twitter:description" content="קובץ הוראות אמיתי לקלוד (קוד פתוח) שהופך אותו למומחה פרסום ממומן ישראלי.">
+<meta name="twitter:image" content="https://shiloliatoai.com/og-image.png">
+
+<style>
+  :root{
+    --bg:#071c30;
+    --bg2:#0a2540;
+    --card:#0f2f4d;
+    --card-border:#1d4569;
+    --text:#eaf4fb;
+    --text-dim:#9dc0dc;
+    --accent:#38bdf8;
+    --accent-dark:#0ea5e9;
+    --accent-glow: rgba(56,189,248,0.35);
+    --wa-green:#25D366;
+    --good:#4ade80;
+    --code-font: Consolas, "Courier New", monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;overflow-x:hidden;width:100%;touch-action:pan-y;}
+  body{
+    font-family:'Segoe UI', Arial, Helvetica, sans-serif;
+    background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;width:100%;max-width:100vw;touch-action:pan-y;
+  }
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(7,28,48,0.85);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--card-border);
+  }
+  header .container{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.2rem;}
+  .logo-badge{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-dark));
+    display:flex;align-items:center;justify-content:center;color:#fff;
+  }
+  .logo-badge svg{width:18px;height:18px;}
+  nav{display:flex;gap:24px;font-size:0.92rem;color:var(--text-dim);}
+  nav a:hover{color:var(--accent);}
+  .cta-btn{
+    background:var(--accent);color:#ffffff;font-weight:700;
+    padding:10px 22px;border-radius:999px;font-size:0.95rem;
+    box-shadow:0 4px 20px var(--accent-glow);
+    transition:transform .15s ease, box-shadow .15s ease;
+    display:inline-block;border:none;cursor:pointer;
+  }
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 26px var(--accent-glow);}
+  .btn-secondary{
+    border:1px solid var(--card-border);padding:10px 22px;border-radius:999px;
+    color:var(--text);font-weight:600;font-size:0.95rem;
+  }
+  .btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+
+  .hero{padding:80px 0 56px;text-align:center;position:relative;}
+  .hero::before{
+    content:"";position:absolute;top:-100px;right:50%;transform:translateX(50%);
+    width:600px;height:600px;
+    background:radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);z-index:0;
+  }
+  .hero .container{position:relative;z-index:1;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--card);border:1px solid var(--card-border);
+    color:var(--text-dim);font-size:0.85rem;padding:6px 16px;border-radius:999px;margin-bottom:22px;
+    font-family:var(--code-font);direction:ltr;
+  }
+  .eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+  .hero h1{font-size:clamp(1.9rem, 4.6vw, 3rem);font-weight:800;margin-bottom:20px;letter-spacing:-0.5px;text-wrap:balance;}
+  .hero p.lead{font-size:1.1rem;color:var(--text-dim);max-width:620px;margin:0 auto 32px;}
+  .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+  section{padding:64px 0;}
+  .section-title{text-align:center;font-size:clamp(1.4rem,2.8vw,2rem);font-weight:800;margin-bottom:12px;}
+  .section-sub{text-align:center;color:var(--text-dim);max-width:600px;margin:0 auto 40px;}
+
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:860px){.grid3{grid-template-columns:1fr;}}
+  .fact-card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:16px;
+    padding:24px 20px;text-align:center;
+  }
+  .fact-card .big{font-family:var(--code-font);font-size:1.5rem;color:var(--accent);direction:ltr;display:block;}
+  .fact-card .small{color:var(--text-dim);font-size:0.88rem;margin-top:8px;}
+
+  .credit{
+    text-align:center;font-size:0.85rem;color:var(--text-dim);
+    background:var(--card);border:1px solid var(--card-border);border-radius:12px;
+    padding:12px 18px;margin-bottom:32px;
+  }
+  .credit b{color:var(--text);}
+  .credit .mono{font-family:var(--code-font);direction:ltr;unicode-bidi:isolate;}
+
+  .window{
+    background:var(--card);border:1px solid var(--card-border);border-radius:16px;
+    overflow:hidden;margin-bottom:28px;
+  }
+  .titlebar{
+    display:flex;align-items:center;gap:10px;padding:12px 16px;
+    background:var(--bg2);border-bottom:1px solid var(--card-border);
+  }
+  .dots{display:flex;gap:6px;}
+  .dots span{width:10px;height:10px;border-radius:50%;display:block;}
+  .dots span:nth-child(1){background:#f87171;}
+  .dots span:nth-child(2){background:#fbbf24;}
+  .dots span:nth-child(3){background:#4ade80;}
+  .filetab{font-family:var(--code-font);font-size:0.82rem;color:var(--text-dim);direction:ltr;}
+
+  .code-wrap{position:relative;}
+  .code-wrap pre{
+    margin:0;padding:20px 18px;max-height:420px;overflow:auto;
+    font-family:var(--code-font);font-size:0.78rem;line-height:1.65;
+    color:var(--text);direction:ltr;text-align:left;white-space:pre-wrap;
+  }
+  .code-actions{position:absolute;top:12px;left:14px;display:flex;gap:8px;z-index:1;}
+  .copy-btn,.dl-btn{
+    font-family:var(--code-font);font-size:0.76rem;font-weight:700;
+    border:none;border-radius:6px;padding:7px 14px;cursor:pointer;
+  }
+  .copy-btn{background:var(--accent);color:#04202f;}
+  .dl-btn{background:var(--bg2);color:var(--text);border:1px solid var(--card-border);display:none;}
+  .dl-btn.ready{display:inline-block;}
+  .copy-btn[data-copied="true"]{background:var(--good);}
+  .dl-status{font-family:var(--code-font);font-size:0.72rem;color:var(--text-dim);padding:0 18px 14px;min-height:1.2em;}
+
+  .install-list{margin:0;padding:20px 18px 10px;list-style:none;display:flex;flex-direction:column;gap:16px;}
+  .install-list li{display:flex;gap:14px;align-items:flex-start;font-size:0.92rem;}
+  .install-list li > div{flex:1;}
+  .install-list code{
+    font-family:var(--code-font);background:var(--bg2);border:1px solid var(--card-border);
+    border-radius:5px;padding:1px 7px;font-size:0.85em;direction:ltr;unicode-bidi:isolate;display:inline-block;
+  }
+  .inum{
+    font-family:var(--code-font);font-weight:700;color:var(--accent);
+    background:var(--bg2);border:1px solid var(--card-border);border-radius:50%;
+    width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.82rem;
+  }
+  .install-note{margin:4px 18px 20px;font-size:0.8rem;color:var(--text-dim);border-top:1px dashed var(--card-border);padding-top:14px;}
+
+  /* condensed about */
+  .about-mini{
+    display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:center;
+    background:var(--card);border:1px solid var(--card-border);border-radius:20px;padding:36px;
+  }
+  @media (max-width:700px){.about-mini{grid-template-columns:1fr;text-align:center;padding:28px 22px;}}
+  .about-mini img{width:100%;height:auto;border-radius:16px;display:block;filter:drop-shadow(0 12px 26px rgba(0,0,0,0.45));}
+  .about-mini h2{font-size:1.5rem;margin-bottom:12px;}
+  .about-mini p{color:var(--text-dim);margin-bottom:14px;}
+  .about-mini .more{color:var(--accent);font-weight:700;}
+  .about-mini .more:hover{text-decoration:underline;}
+
+  .contact-wrap{
+    background:var(--card);border:1px solid var(--card-border);border-radius:24px;padding:44px;
+    display:grid;grid-template-columns:1fr 1fr;gap:44px;
+  }
+  @media (max-width:800px){.contact-wrap{grid-template-columns:1fr;padding:30px 22px;}}
+  .contact-info h2{font-size:1.5rem;margin-bottom:14px;}
+  .contact-info p{color:var(--text-dim);margin-bottom:22px;}
+  .contact-info ul{list-style:none;}
+  .contact-info li{display:flex;align-items:center;gap:10px;margin-bottom:12px;color:var(--text-dim);font-size:0.93rem;}
+  .contact-info li .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+
+  form{display:flex;flex-direction:column;gap:14px;}
+  form label{font-size:0.86rem;color:var(--text-dim);margin-bottom:-6px;}
+  form input, form textarea{
+    background:var(--bg2);border:1px solid var(--card-border);border-radius:10px;
+    padding:12px 14px;color:var(--text);font-family:inherit;font-size:0.94rem;outline:none;
+    transition:border-color .15s ease;
+  }
+  form input:focus, form textarea:focus{border-color:var(--accent);}
+  form textarea{resize:vertical;min-height:80px;}
+  form button{
+    background:var(--accent);color:#ffffff;font-weight:800;border:none;border-radius:999px;
+    padding:14px;font-size:1rem;cursor:pointer;transition:transform .15s ease;box-shadow:0 4px 20px var(--accent-glow);
+  }
+  form button:hover{transform:translateY(-2px);}
+  .form-note{font-size:0.78rem;color:var(--text-dim);text-align:center;}
+  .success-msg, .error-msg{display:none;padding:14px;border-radius:10px;font-size:0.9rem;text-align:center;}
+  .success-msg{background:rgba(37,211,102,0.15);color:var(--wa-green);border:1px solid var(--wa-green);}
+  .error-msg{background:rgba(220,53,69,0.12);color:#ff8a94;border:1px solid #ff8a94;}
+
+  footer{border-top:1px solid var(--card-border);padding:32px 0;text-align:center;color:var(--text-dim);font-size:0.88rem;}
+  footer a.wa-float{color:var(--wa-green);font-weight:700;}
+  footer .fine{font-size:0.78rem;margin-top:6px;opacity:0.85;}
+
+  .wa-widget{position:fixed;bottom:24px;left:24px;z-index:60;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 48px);}
+  .wa-fab{
+    width:58px;height:58px;border-radius:50%;flex-shrink:0;background:var(--wa-green);color:#fff;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,0.35);
+    transition:transform .15s ease;
+  }
+  .wa-fab svg{width:28px;height:28px;}
+  .wa-fab:hover{transform:scale(1.08);}
+  @media (max-width:768px){.wa-widget{bottom:16px;left:16px;}.wa-fab{width:50px;height:50px;}.wa-fab svg{width:24px;height:24px;}}
+
+  @media (max-width:768px){
+    header .container{padding:14px 18px;}
+    nav{display:none;}
+    .cta-btn{padding:9px 16px;font-size:0.85rem;}
+    .hero{padding:52px 0 40px;}
+    section{padding:44px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a class="logo" href="../../index.html"><div class="logo-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></div> שילה ליאטו</a>
+    <nav>
+      <a href="#skill">הסקיל</a>
+      <a href="#about">עליי</a>
+      <a href="#contact">צור קשר</a>
+    </nav>
+    <a href="../../index.html" class="cta-btn">לעמוד הבית</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow"><i class="eyebrow-dot"></i> skill · israeli-paid-ads</span>
+    <h1>יש דברים בפרסום ישראלי שרוב הסוכנויות מפספסות</h1>
+    <p class="lead">קובץ הוראות אמיתי לקלוד, קוד פתוח, שהופך אותו למי שמכיר את הכללים הישראליים הספציפיים לקמפיינים ממומנים - לא רק "כתוב לי מודעה".</p>
+    <div class="hero-ctas">
+      <a href="#skill" class="cta-btn">להורדת הסקיל</a>
+      <a href="#about" class="btn-secondary">מי בנה את זה?</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="grid3">
+      <div class="fact-card">
+        <span class="big">שבת</span>
+        <div class="small">עוצר קמפיינים אוטומטית בשבת ובכיפור</div>
+      </div>
+      <div class="fact-card">
+        <span class="big">22</span>
+        <div class="small">גיל "הצעיר המקצועי" בישראל, לא 18 - בגלל הצבא</div>
+      </div>
+      <div class="fact-card">
+        <span class="big">4 חוד'</span>
+        <div class="small">זכות ביטול לעולה חדש, נכה, או מעל גיל 65</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skill" style="background:var(--bg2);">
+  <div class="container">
+    <h2 class="section-title">הסקיל: israeli-paid-ads</h2>
+    <p class="section-sub">שימו את הקובץ הזה בקלוד, והוא מתחיל לעבוד לפי כללים ישראליים ספציפיים - עברית, מע"מ, ורגולציה - שרוב הכלים מפספסים.</p>
+
+    <div class="credit">
+      <b>המקור:</b> קהילת <b>Skills-IL</b> (קוד פתוח, רישיון MIT) ·
+      <span class="mono">github.com/skills-il/marketing-growth</span> ·
+      לא נכתב על ידי, אני רק מפיץ ומסביר איך משתמשים בו.
+    </div>
+
+    <div class="window">
+      <div class="titlebar">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="filetab">israeli-paid-ads/SKILL.md</div>
+      </div>
+      <div class="code-wrap">
+        <div class="code-actions">
+          <button class="copy-btn" onclick="copySkill(this)" type="button">העתקה</button>
+          <button id="dl-btn" class="dl-btn" onclick="downloadSkill(this)" type="button">הורדת SKILL.md</button>
+        </div>
+        <pre id="skill-code">---
+name: israeli-paid-ads
+description: Create and optimize paid advertising campaigns for the Israeli market across Google Ads, Meta (Facebook/Instagram), and Israeli platforms (Taboola, Outbrain, Yad2, publisher networks). Use when user asks about Israeli PPC, Hebrew ad copy, Israeli audience targeting, or ad budget optimization. Covers Hebrew keyword research, Israeli Consumer Protection Law ad regulations, Amendment 13 consent rules for ad targeting, local bidding strategies, and audience segmentation. Do NOT use for organic social media, SEO, email marketing, or non-Israeli ad markets.
+license: MIT
+compatibility: Works with Claude Code, Cursor, GitHub Copilot, Windsurf, OpenCode, Codex.
+---
+
+# Israeli Paid Ads
+
+## Instructions
+
+### Step 1: Choose Platform and Campaign Type
+
+Select the right platform based on business type, audience, and campaign objective.
+
+| Platform | Best For | Israeli Audience | Avg CPM (NIS) | Ad Formats |
+|----------|----------|------------------|---------------|------------|
+| Google Ads (Search) | High-intent traffic, lead gen | 98.17% search market share in Israel | N/A (CPC model) | Text ads, responsive search ads |
+| Meta (Facebook) | B2C, community, local business | ~7.6M Israeli users | 15-40 | Image, video, carousel, collection |
+| Instagram | Lifestyle, fashion, food, travel | ~5M Israeli users | 20-50 | Stories, reels, feed, shopping |
+| LinkedIn | B2B, SaaS, enterprise, recruiting | ~3M Israeli professionals | 40-120 | Single image / document / video, Sponsored Messaging |
+| TikTok | Gen Z, viral content, brand awareness | Growing Israeli user base (18-34) | 10-30 | In-feed video, branded effects |
+
+### Step 2: Hebrew Keyword Research
+
+Hebrew is morphologically rich: a single root produces dozens of inflections that keyword tools do not group automatically (verb conjugations, noun forms, construct state, with/without definite article, colloquial spellings). Missing one silently forfeits its search volume. Also check English/transliterated variants Israelis actually search.
+
+### Step 3: Write Hebrew Ad Copy
+
+- Use informal register (guf sheni): "אתה/את" not "אתם"
+- Include prices WITH VAT - Israeli law requires all advertised prices to include 18% VAT
+- Add local trust signals: "חברה ישראלית", "שירות בעברית", local phone prefix
+- Always preview in RTL - mixed Hebrew/English/digit strings can reorder unexpectedly
+
+### Step 4: Israeli Audience Targeting
+
+- Military service gap: the "young professional" segment starts at 22-23 in Israel, not 18
+- Shabbat scheduling: most Israeli consumers are inactive Friday 14:00 through Saturday evening - pause or reduce bids
+- Hebrew calendar holidays shift yearly - pause campaigns on Yom Kippur
+- Consent for ad targeting (Amendment 13): uploading a customer list, using it as a lookalike/Advantage+ seed, or pixel/CAPI remarketing all require explicit, informed, granular consent
+- Contacting leads (Spam Law): prior opt-in required, message must carry "פרסומת" and a working opt-out, violation carries statutory damages up to ~1,000 NIS per message
+
+### Step 5: Ad Regulations (Chok Haganat HaTzarchan)
+
+- VAT-inclusive pricing is mandatory by law
+- Sponsored content must display "פרסומת" or "תוכן ממומן"
+- Influencer partnerships must be disclosed with #פרסומת, visible without clicking "more"
+- Cancellation rights: standard distance-sale window is 14 days (timing varies by transaction type), but a new immigrant (oleh chadash), a person with a disability, or a person 65+ gets FOUR MONTHS instead - most agents and businesses omit this entirely
+
+### Step 6: Set Up Conversion Measurement (before Step 7)
+
+Install the tag/pixel + server-side Conversions API, deduplicate with a shared event ID, pass value + currency (ILS), decide the VAT basis, fire a test conversion before spending any budget.
+
+### Step 7: Budget and Bidding, and VAT/ROAS
+
+For a VAT-registered business (osek murshe), the 18% VAT on your ad invoice is reclaimable input VAT - it is NOT a real cost and must NOT go into your ROAS denominator. Use ex-VAT ad spend against ex-VAT (or gross-vs-gross, consistently) revenue. Only divide by 1.18 if you are an osek patur who cannot reclaim VAT.
+
+Bundled `scripts/cpc_calculator.py` estimates campaign costs by vertical and budget, treating VAT correctly.
+
+## Gotchas (common agent mistakes this skill exists to prevent)
+
+- Generating ad copy with pre-VAT prices (breaches Consumer Protection Law)
+- Dividing ad spend by 1.18 for a VAT-registered business when input VAT is reclaimable
+- Running campaigns 24/7 through Shabbat and Yom Kippur
+- Targeting only one Hebrew inflection of a keyword and missing the rest of the search volume
+- Building "high income" or condition-based audiences for finance/insurance/legal/health advertisers - both Google and Meta restrict sensitive-category targeting
+- Writing a flat "14-day cancellation right" and missing the four-month right for olim, people with disabilities, and 65+
+
+## Reference Links
+
+- Google Ads Help, About Smart Bidding - support.google.com/google-ads/answer/2459326
+- Meta Advertising Standards - transparency.meta.com/policies/ad-standards
+- Privacy Protection Authority (Amendment 13) - gov.il
+- Israel Tax Authority (current VAT rate) - gov.il
+
+Full reference tables, the complete regulation breakdown, and the CPC calculator script live in the source repository (see credit above) under israeli-paid-ads/references/ and israeli-paid-ads/scripts/.</pre>
+      </div>
+      <div id="dl-status" class="dl-status"></div>
+    </div>
+
+    <div class="window">
+      <div class="titlebar">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="filetab">מדריך הפעלה - שלב אחרי שלב</div>
+      </div>
+      <ol class="install-list">
+        <li><span class="inum">1</span><div><b>ודאו שיש לכם מנוי בתשלום</b><br>Skills זמין רק ב-Claude Pro/Max, לא בגרסה החינמית.</div></li>
+        <li><span class="inum">2</span><div><b>הורידו את הקובץ</b><br>לחצו על "הורדת SKILL.md" למעלה, או "העתקה" והדביקו לקובץ טקסט חדש.</div></li>
+        <li><span class="inum">3</span><div><b>שימו אותו בתיקייה בשם <code>israeli-paid-ads</code></b><br>רוצים גם את מחשבון התקציב וקובץ הרגולציה המלא? הם בריפו המקורי (קישור למעלה).</div></li>
+        <li><span class="inum">4</span><div><b>בקלוד: Settings → Capabilities → Skills</b><br>(בחלק מהגרסאות מופיע כ-"Features"). חפשו "Upload skill" או "Create skill".</div></li>
+        <li><span class="inum">5</span><div><b>בחרו את הקובץ/התיקייה שהורדתם ואשרו</b></div></li>
+        <li><span class="inum">6</span><div><b>ודאו שהמתג (Toggle) של הסקיל דלוק</b></div></li>
+        <li><span class="inum">7</span><div><b>פתחו שיחה חדשה ובקשו: "תבנה לי קמפיין גוגל אדס לעסק שלי"</b></div></li>
+      </ol>
+      <p class="install-note">שמות התפריטים ב-Settings משתנים מדי פעם בין גרסאות - אם משהו לא נראה בדיוק ככה, חפשו את המילה "Skills" בהגדרות.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-mini">
+      <img src="../../about-me.png" alt="שילה ליאטו">
+      <div>
+        <h2>היי, אני שילה</h2>
+        <p>אני בונה בוטים, אוטומציות וסוכני AI לעסקים קטנים - התחיל מפרויקט אישי בעסק המשפחתי, והפך לתשוקה אמיתית ללמד ולפתור בעיות אמיתיות עם AI.</p>
+        <p>הסקיל הזה הוא דוגמה קטנה למה שאני עושה: לוקח כלי AI ומכוון אותו לעבוד בדיוק בשביל עסקים בישראל.</p>
+        <a class="more" href="../../index.html#about">קראו את הסיפור המלא בעמוד הבית ←</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--bg2);">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h2>רוצים עזרה עם קמפיין אמיתי?</h2>
+        <p>השאירו פרטים ואחזור אליכם תוך יום עסקים - בין אם זה עזרה עם הסקיל, או פרויקט AI אחר לעסק שלכם.</p>
+        <ul>
+          <li><span class="dot"></span> ייעוץ ראשוני חינם</li>
+          <li><span class="dot"></span> הצעת מחיר מותאמת אישית</li>
+          <li><span class="dot"></span> מענה מהיר תוך יום עסקים</li>
+        </ul>
+      </div>
+      <div>
+        <form id="lead-form" action="https://formspree.io/f/meeydzqd" method="POST">
+          <input type="hidden" name="page" value="skill-israeli-paid-ads">
+          <label for="name">שם מלא</label>
+          <input type="text" id="name" name="name" placeholder="איך קוראים לך?" required>
+
+          <label for="phone">טלפון</label>
+          <input type="tel" id="phone" name="phone" placeholder="050-0000000" required>
+
+          <label for="email">אימייל</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com">
+
+          <label for="business">שם העסק</label>
+          <input type="text" id="business" name="business" placeholder="שם העסק שלך">
+
+          <label for="message">קצת על מה שאתם צריכים</label>
+          <textarea id="message" name="message" placeholder="ספרו לי במה אתם צריכים עזרה..."></textarea>
+
+          <button type="submit">שלחו לי פרטים</button>
+          <div class="success-msg" id="success-msg">תודה! הפרטים התקבלו, אחזור אליכם בהקדם.</div>
+          <div class="error-msg" id="error-msg">משהו השתבש בשליחה, נסו שוב או צרו קשר בוואטסאפ.</div>
+          <p class="form-note">הפרטים שלכם נשארים חסויים ומשמשים רק ליצירת קשר.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> שילה ליאטו · בניית בוטים חכמים לוואטסאפ</p>
+    <p>או פשוט תכתבו לי ישירות ב<a class="wa-float" href="https://wa.me/972556613023" target="_blank" rel="noopener">וואטסאפ</a></p>
+    <p class="fine">הסקיל פותח ע"י קהילת Skills-IL (MIT) · הודגם ונלמד ע"י שילה.</p>
+  </div>
+</footer>
+
+<div class="wa-widget">
+  <a class="wa-fab" href="https://wa.me/972556613023" target="_blank" rel="noopener" title="דברו איתי בוואטסאפ">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 5L2 22l5.2-1.36a9.94 9.94 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.03-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2zm5.8 14.24c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36l.55.01c.18.01.42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.3.48-.14.17-.3.38-.43.51-.14.14-.29.29-.13.57.17.29.75 1.24 1.61 2 1.11.99 2.04 1.3 2.33 1.44.29.14.46.12.63-.07.17-.19.72-.83.91-1.12.19-.29.38-.24.63-.14.26.1 1.65.78 1.94.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+  </a>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('lead-form');
+  const successMsg = document.getElementById('success-msg');
+  const errorMsg = document.getElementById('error-msg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+    const data = new FormData(form);
+    try {
+      const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (response.ok) { form.reset(); successMsg.style.display = 'block'; }
+      else { errorMsg.style.display = 'block'; }
+    } catch (err) { errorMsg.style.display = 'block'; }
+  });
+
+  function copySkill(btn){
+    var text = document.getElementById('skill-code').innerText;
+    var done = function(){
+      btn.textContent = 'הועתק!';
+      btn.setAttribute('data-copied','true');
+      setTimeout(function(){ btn.textContent = 'העתקה'; btn.removeAttribute('data-copied'); }, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text, done); });
+    } else { fallbackCopy(text, done); }
+  }
+  function fallbackCopy(text, done){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta); done();
+  }
+
+  var downloadsApi = null;
+  (async function initDownloads(){
+    try {
+      if (window.claude && typeof window.claude.use === 'function'){
+        downloadsApi = await window.claude.use('downloads');
+      }
+    } catch(e){ downloadsApi = null; }
+    var btn = document.getElementById('dl-btn');
+    if (downloadsApi && btn){ btn.classList.add('ready'); }
+  })();
+
+  function downloadSkill(btn){
+    var status = document.getElementById('dl-status');
+    var text = document.getElementById('skill-code').innerText;
+    if (downloadsApi){
+      status.textContent = '...';
+      downloadsApi.save({ filename: 'SKILL.md', data: text }).then(function(res){
+        status.textContent = 'הקובץ נשמר ✓';
+        setTimeout(function(){ status.textContent = ''; }, 2500);
+      }).catch(function(err){
+        if (err && err.code === 'declined'){ status.textContent = ''; return; }
+        triggerBrowserDownload(text);
+      });
+    } else {
+      triggerBrowserDownload(text);
+    }
+  }
+  function triggerBrowserDownload(text){
+    var blob = new Blob([text], { type: 'text/markdown;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'SKILL.md';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+</body>
+</html>
