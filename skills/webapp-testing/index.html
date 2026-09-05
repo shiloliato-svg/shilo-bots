@@ -61,6 +61,7 @@
   .logo-badge svg{width:18px;height:18px;}
   nav{display:flex;gap:24px;font-size:0.92rem;color:var(--text-dim);}
   nav a:hover{color:var(--accent);}
+  .header-actions{display:flex;align-items:center;gap:10px;}
   .cta-btn{
     background:var(--accent);color:#ffffff;font-weight:700;
     padding:10px 22px;border-radius:999px;font-size:0.95rem;
@@ -218,9 +219,14 @@
   @media (max-width:768px){
     header .container{padding:14px 18px;}
     nav{display:none;}
-    .cta-btn{padding:9px 16px;font-size:0.85rem;}
+    .header-actions{gap:6px;}
+    .cta-btn, .header-actions .btn-secondary{padding:8px 12px;font-size:0.78rem;}
     .hero{padding:52px 0 40px;}
     section{padding:44px 0;}
+  }
+  @media (max-width:400px){
+    .logo{font-size:0.95rem;}
+    .logo span, .logo{white-space:nowrap;}
   }
 </style>
 </head>
@@ -234,7 +240,10 @@
       <a href="#about">עליי</a>
       <a href="#contact">צור קשר</a>
     </nav>
-    <a href="../../index.html" class="cta-btn">לעמוד הבית</a>
+    <div class="header-actions">
+      <a href="#about" class="btn-secondary">קצת עליי</a>
+      <a href="../../index.html" class="cta-btn">לעמוד הבית</a>
+    </div>
   </div>
 </header>
 
