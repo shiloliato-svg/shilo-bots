@@ -497,15 +497,8 @@ Full reference tables, the complete regulation breakdown, and the CPC calculator
   }
 
   var downloadsApi = null;
-  (async function initDownloads(){
-    try {
-      if (window.claude && typeof window.claude.use === 'function'){
-        downloadsApi = await window.claude.use('downloads');
-      }
-    } catch(e){ downloadsApi = null; }
-    var btn = document.getElementById('dl-btn');
-    if (downloadsApi && btn){ btn.classList.add('ready'); }
-  })();
+  var dlBtn = document.getElementById('dl-btn');
+  if (dlBtn){ dlBtn.classList.add('ready'); }
 
   function downloadSkill(btn){
     var status = document.getElementById('dl-status');
